@@ -15,4 +15,4 @@ To see your applications health enter url `http://localhost:8081/healthcheck`
 
 Svelte App:
 ---
-see REAME.md  located in src/main/webapp
+see README.md  located in src/main/webapp
