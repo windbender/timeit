@@ -11,7 +11,8 @@ import jakarta.ws.rs.sse.OutboundSseEvent;
 import jakarta.ws.rs.sse.Sse;
 import jakarta.ws.rs.sse.SseBroadcaster;
 import jakarta.ws.rs.sse.SseEventSink;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -25,12 +26,15 @@ import java.util.stream.DoubleStream;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/")
-@Slf4j
+
 @Singleton
 public class EventResource implements EventSender {
+    private static Logger log = LoggerFactory.getLogger(EventResource.class);
 
     private final EventStore store;
     private Map<String,SseBroadcaster> broadcasters = new ConcurrentHashMap<>();
+
+
     public EventResource(EventStore store) {
         this.store = store;
     }
